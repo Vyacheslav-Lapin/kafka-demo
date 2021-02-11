@@ -1,10 +1,9 @@
 mykafka:
-  #  bootstrap-address: localhost:29092
   topic-name: mike
 
 spring:
   kafka:
     bootstrap-servers: localhost:29092
 #    producer:
-#      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-serializer: org.apache.kafka.common.serialization.StringDeserializer
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer

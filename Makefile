@@ -82,6 +82,9 @@ build:
 	./mvnw verify
 	chmod +x ./target/$(PA)-$(PV).jar
 
+run-kafka:
+	docker-compose up
+
 run:
 	./mvnw spring-boot:run -Dspring.profiles.active=local
 #	./target/$(PA)-$(PV).jar
@@ -135,4 +138,3 @@ git-branch:
 
 .DEFAULT_GOAL := build-run
 build-run: update build run
-  

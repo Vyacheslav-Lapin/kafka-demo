@@ -1,3 +1,10 @@
 mykafka:
-  bootstrap-address: localhost:29092
   topic-name: mike
+
+spring:
+  kafka:
+    consumer:
+      group-id: mikesconsumergroup
+      bootstrap-servers: localhost:29092
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

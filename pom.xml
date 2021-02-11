@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>producer</module>
+    <module>consumer</module>
+  </modules>
 
   <parent>
     <groupId>org.springframework.cloud</groupId>
@@ -10,19 +16,18 @@
 
   <groupId>ru.vlapin.demo</groupId>
   <artifactId>kafka-demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>${revision}</version>
 
   <properties>
 
     <!--region General-->
     <java.version>15</java.version>
     <minimal.maven.version>3.6.1</minimal.maven.version>
+    <revision>0.0.1-SNAPSHOT</revision>
     <!--endregion-->
 
     <!--region Bills of material (BOM)-->
     <!--endregion-->
-
-    <testcontainers.version>1.15.1</testcontainers.version>
 
     <!--region Libs-->
     <vavr.version>0.10.3</vavr.version>
@@ -39,14 +44,17 @@
     <!--endregion-->
 
     <!--region Plugins-->
+    <maven.compiler.release>${java.version}</maven.compiler.release>
     <maven.compiler.executable>true</maven.compiler.executable>
+    <maven.compiler.parameters>true</maven.compiler.parameters>
+    <maven.compiler.forceJavacCompilerUse>true</maven.compiler.forceJavacCompilerUse>
+
     <maven-enforcer-plugin.version>3.0.0-M3</maven-enforcer-plugin.version>
     <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
     <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
     <sonar-maven-plugin.version>2.7.1</sonar-maven-plugin.version>
     <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
-    <dockerfile-maven-plugin.version>1.4.13</dockerfile-maven-plugin.version>
     <lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
     <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
     <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
@@ -55,65 +63,16 @@
 
   </properties>
 
-
   <repositories/>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-rest</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka-streams</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-openfeign</artifactId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.thymeleaf.extras</groupId>
-      <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <optional>true</optional>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.postgresql</groupId>
-      <artifactId>postgresql</artifactId>
-      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -134,26 +93,6 @@
     <dependency>
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>kafka</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testcontainers</groupId>
-      <artifactId>postgresql</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -184,32 +123,10 @@
     </dependency>
     <!--endregion-->
 
-    <!--region OpenAPI-->
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-data-rest</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-security</artifactId>
-    </dependency>
-    <!--endregion-->
-
   </dependencies>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.testcontainers</groupId>
-        <artifactId>testcontainers-bom</artifactId>
-        <version>${testcontainers.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
       <dependency>
         <groupId>io.vavr</groupId>
         <artifactId>vavr</artifactId>
@@ -249,24 +166,6 @@
       </dependency>
       <!--endregion-->
 
-      <!--region OpenAPI-->
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-ui</artifactId>
-        <version>${springdoc-openapi.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-data-rest</artifactId>
-        <version>${springdoc-openapi.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-security</artifactId>
-        <version>${springdoc-openapi.version}</version>
-      </dependency>
-      <!--endregion-->
-
     </dependencies>
   </dependencyManagement>
 
@@ -276,20 +175,6 @@
 
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-maven-plugin</artifactId>
-          <configuration>
-            <excludes>
-              <exclude>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-              </exclude>
-            </excludes>
-            <executable>true</executable>
-            <jvmArguments>--enable-preview</jvmArguments>
-          </configuration>
-        </plugin>
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven-compiler-plugin.version}</version>
@@ -420,30 +305,6 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>com.spotify</groupId>
-          <artifactId>dockerfile-maven-plugin</artifactId>
-          <version>${dockerfile-maven-plugin.version}</version>
-          <configuration>
-            <repository>${project.name}</repository>
-            <tag>${project.version}</tag>
-            <buildArgs>
-              <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-            </buildArgs>
-          </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>javax.activation</groupId>
-              <artifactId>javax.activation-api</artifactId>
-              <version>1.2.0</version>
-            </dependency>
-            <dependency>
-              <groupId>org.codehaus.plexus</groupId>
-              <artifactId>plexus-archiver</artifactId>
-              <version>3.6.0</version>
-            </dependency>
-          </dependencies>
-        </plugin>
-        <plugin>
           <groupId>org.projectlombok</groupId>
           <artifactId>lombok-maven-plugin</artifactId>
           <version>${lombok-maven-plugin.version}</version>
@@ -455,6 +316,16 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+            </exclude>
+          </excludes>
+          <executable>true</executable>
+          <jvmArguments>--enable-preview</jvmArguments>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
@@ -474,10 +345,6 @@
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>dockerfile-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.projectlombok</groupId>

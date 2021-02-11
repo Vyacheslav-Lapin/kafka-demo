@@ -1,6 +1,5 @@
-package com.codeinvestigator.kafkaconsumer.consumer;
+package ru.vlapin.demo.kafkademo.consumer.service;
 
-import com.codeinvestigator.kafkaconsumer.config.MyKafkaProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -9,8 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConsumerService {
 
-    @KafkaListener(topics = {"mike"}, groupId = MyKafkaProperties.CONSUMER_GROUP_ID)
-    public void consumeMessages(String message){
-      log.info("CONSUMER: We received a message!!! {}", message);
-    }
+  @KafkaListener(
+      topics = "${mykafka.topic-name}",
+      groupId = "${spring.kafka.consumer.group-id}")
+  public void consumeMessages(String message) {
+    log.info("CONSUMER: We received a message!!! {}", message);
+  }
 }
