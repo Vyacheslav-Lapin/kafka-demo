@@ -25,7 +25,11 @@ public class KafkaProducerApplication {
 
   @Bean
   NewTopic newTopic() {
-    return TopicBuilder.name(topicName).build();
+    return TopicBuilder
+               .name(topicName)
+//               .partitions(1)
+//               .replicas(1)
+               .build();
 //    return new NewTopic(topicName, 1, (short) 1);
   }
 }

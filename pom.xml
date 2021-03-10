@@ -9,9 +9,12 @@
   </modules>
 
   <parent>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-parent</artifactId>
-    <version>2020.0.1</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.3</version>
+    <!--<groupId>org.springframework.cloud</groupId>-->
+    <!--<artifactId>spring-cloud-starter-parent</artifactId>-->
+    <!--<version>2020.0.1</version>-->
   </parent>
 
   <groupId>ru.vlapin.demo</groupId>
@@ -27,6 +30,7 @@
     <!--endregion-->
 
     <!--region Bills of material (BOM)-->
+    <spring-cloud.version>2020.0.1</spring-cloud.version>
     <!--endregion-->
 
     <!--region Libs-->
@@ -35,7 +39,7 @@
     <checker.version>3.10.0</checker.version>
     <annotations.version>20.1.0</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
-    <spotbugs.version>4.2.0</spotbugs.version>
+    <spotbugs.version>4.2.1</spotbugs.version>
     <error_prone_annotations.version>2.5.1</error_prone_annotations.version>
     <springdoc-openapi.version>1.5.3</springdoc-openapi.version>
     <!--endregion-->
@@ -127,6 +131,15 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <dependency>
         <groupId>io.vavr</groupId>
         <artifactId>vavr</artifactId>
