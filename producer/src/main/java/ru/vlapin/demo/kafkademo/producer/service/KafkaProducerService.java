@@ -24,6 +24,7 @@ public class KafkaProducerService {
 
   @NonFinal
   @Setter(value = PRIVATE, onMethod_ = @Autowired)
+//  @Setter(value = PRIVATE, onMethod_ = @Autowired)
   KafkaTemplate<String, String> kafkaTemplate;
 
   //  @Value("${mykafka.topic-name}")
@@ -32,8 +33,8 @@ public class KafkaProducerService {
   private static int runningId;
 
   @Scheduled(
-      fixedRate = 10 * 1_000,
-      initialDelay = 5 * 1_000)
+      fixedRate = 2 * 1_000,
+      initialDelay = 2 * 1_000)
   public final void produceMessages() {
 
     log.info("Produce message - BEGIN");
@@ -44,7 +45,7 @@ public class KafkaProducerService {
                 runningId++,
                 LocalDateTime.now());
 
-    ProducerRecord<String, String> producerRecord = new ProducerRecord<>(topicName, message);
+    val producerRecord = new ProducerRecord<String, String>(topicName, message);
 
 //    kafkaTemplate.send(topicName, message)
     kafkaTemplate.send(producerRecord)
@@ -52,11 +53,10 @@ public class KafkaProducerService {
             result -> log.info("SUCCESS!!! This is the result: {}", result),
             ex -> log.error("ERROR Kafka error happened: {}", ex.toString()));
 
-
-    ProducerRecord<String, String> producerRecord2 = new ProducerRecord<>(
+    val producerRecord2 = new ProducerRecord<>(
         topicName,
         "Precision Products",
-        "France");
+        "France ++");
 
     kafkaTemplate.send(producerRecord2)
         .addCallback(

@@ -11,10 +11,10 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.3</version>
+    <version>2.4.4</version>
     <!--<groupId>org.springframework.cloud</groupId>-->
     <!--<artifactId>spring-cloud-starter-parent</artifactId>-->
-    <!--<version>2020.0.1</version>-->
+    <!--<version>2020.0.2</version>-->
   </parent>
 
   <groupId>ru.vlapin.demo</groupId>
@@ -30,16 +30,16 @@
     <!--endregion-->
 
     <!--region Bills of material (BOM)-->
-    <spring-cloud.version>2020.0.1</spring-cloud.version>
+    <spring-cloud.version>2020.0.2</spring-cloud.version>
     <!--endregion-->
 
     <!--region Libs-->
     <vavr.version>0.10.3</vavr.version>
     <lombok.version>1.18.18</lombok.version>
-    <checker.version>3.10.0</checker.version>
+    <checker.version>3.11.0</checker.version>
     <annotations.version>20.1.0</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
-    <spotbugs.version>4.2.1</spotbugs.version>
+    <spotbugs.version>4.2.2</spotbugs.version>
     <error_prone_annotations.version>2.5.1</error_prone_annotations.version>
     <springdoc-openapi.version>1.5.3</springdoc-openapi.version>
     <!--endregion-->
@@ -59,7 +59,7 @@
     <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
     <sonar-maven-plugin.version>2.7.1</sonar-maven-plugin.version>
     <spotbugs-maven-plugin.version>4.0.0</spotbugs-maven-plugin.version>
-    <lombok-maven-plugin.version>1.18.16.0</lombok-maven-plugin.version>
+    <lombok-maven-plugin.version>1.18.18.0</lombok-maven-plugin.version>
     <lombok.addOutputDirectory>false</lombok.addOutputDirectory>
     <lombok.sourceDirectory>${project.basedir}/src/main/java</lombok.sourceDirectory>
     <lombok.testSourceDirectory>${project.basedir}/src/test/java</lombok.testSourceDirectory>
