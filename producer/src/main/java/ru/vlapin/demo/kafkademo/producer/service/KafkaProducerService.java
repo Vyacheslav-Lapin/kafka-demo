@@ -24,7 +24,6 @@ public class KafkaProducerService {
 
   @NonFinal
   @Setter(value = PRIVATE, onMethod_ = @Autowired)
-//  @Setter(value = PRIVATE, onMethod_ = @Autowired)
   KafkaTemplate<String, String> kafkaTemplate;
 
   //  @Value("${mykafka.topic-name}")
