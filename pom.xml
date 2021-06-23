@@ -5,10 +5,10 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.5</version>
+    <version>2.5.1</version>
     <!--<groupId>org.springframework.cloud</groupId>-->
     <!--<artifactId>spring-cloud-starter-parent</artifactId>-->
-    <!--<version>2020.0.2</version>-->
+    <!--<version>2020.0.3</version>-->
   </parent>
 
   <groupId>ru.vlapin.demo</groupId>
@@ -31,16 +31,16 @@
     <!--endregion-->
 
     <!--region Bills of material (BOM)-->
-    <spring-cloud.version>2020.0.2</spring-cloud.version>
+    <spring-cloud.version>2020.0.3</spring-cloud.version>
     <!--endregion-->
 
     <!--region Libs-->
     <vavr.version>0.10.3</vavr.version>
-    <checker.version>3.13.0</checker.version>
-    <annotations.version>20.1.0</annotations.version>
+    <checker.version>3.15.0</checker.version>
+    <annotations.version>21.0.1</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
     <spotbugs.version>4.2.3</spotbugs.version>
-    <error_prone_annotations.version>2.6.0</error_prone_annotations.version>
+    <error_prone_annotations.version>2.7.1</error_prone_annotations.version>
     <springdoc-openapi.version>1.5.3</springdoc-openapi.version>
     <!--endregion-->
 
@@ -62,8 +62,6 @@
     <!--endregion-->
 
   </properties>
-
-  <repositories/>
 
   <dependencies>
     <dependency>

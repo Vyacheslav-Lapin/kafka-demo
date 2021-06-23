@@ -16,15 +16,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ConfigurationPropertiesScan
 public class KafkaProducerApplication {
 
-  @Value("${mykafka.topic-name}")
-  String topicName;
-
   public static void main(String[] args) {
     SpringApplication.run(KafkaProducerApplication.class, args);
   }
 
   @Bean
-  NewTopic newTopic() {
+  NewTopic newTopic(@Value("${mykafka.topic-name}") String topicName) {
     return TopicBuilder
                .name(topicName)
 //               .partitions(1)
