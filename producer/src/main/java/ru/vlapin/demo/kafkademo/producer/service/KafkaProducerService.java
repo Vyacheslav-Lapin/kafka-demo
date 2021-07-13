@@ -11,11 +11,19 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 
+public interface KafkaProducerService {
+
+  @Scheduled(
+      fixedRate = 2 * 1_000,
+      initialDelay = 2 * 1_000)
+  void produceMessages();
+}
+
 @Slf4j
 //@Service
 @RequiredArgsConstructor
 @ConfigurationProperties("mykafka")
-public class KafkaProducerService {
+class KafkaProducerServiceImpl implements KafkaProducerService {
 
   KafkaTemplate<String, String> kafkaTemplate;
 
@@ -24,6 +32,7 @@ public class KafkaProducerService {
 
   private static int runningId;
 
+  @Override
   @Scheduled(
       fixedRate = 2 * 1_000,
       initialDelay = 2 * 1_000)
@@ -39,7 +48,7 @@ public class KafkaProducerService {
 
     val producerRecord = new ProducerRecord<String, String>(topicName, message);
 
-//    kafkaTemplate.send(topicName, message)
+    //    kafkaTemplate.send(topicName, message)
     kafkaTemplate.send(producerRecord)
         .addCallback(
             result -> log.info("SUCCESS!!! This is the result: {}", result),

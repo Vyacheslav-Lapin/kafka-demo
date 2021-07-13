@@ -1,6 +1,5 @@
 package ru.vlapin.demo.kafkademo.producer;
 
-import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -12,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
-@RequiredArgsConstructor
 @ConfigurationPropertiesScan
 public class KafkaProducerApplication {
 
