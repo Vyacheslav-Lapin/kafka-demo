@@ -13,9 +13,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 public interface KafkaProducerService {
 
-  @Scheduled(
-      fixedRate = 2 * 1_000,
-      initialDelay = 2 * 1_000)
   void produceMessages();
 }
 
