@@ -20,8 +20,7 @@ public class KafkaProducerService {
   KafkaTemplate<String, String> kafkaTemplate;
 
   @Setter
-  @NonFinal
-  String topicName;
+  @NonFinal String topicName;
 
   private static int runningId;
 

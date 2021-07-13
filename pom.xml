@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.5.1</version>
+    <version>2.5.2</version>
     <!--<groupId>org.springframework.cloud</groupId>-->
     <!--<artifactId>spring-cloud-starter-parent</artifactId>-->
     <!--<version>2020.0.3</version>-->
@@ -26,6 +26,7 @@
 
     <!--region General-->
     <java.version>16</java.version>
+    <spring-boot.version>2.5.2</spring-boot.version>
     <minimal.maven.version>3.6.1</minimal.maven.version>
     <revision>0.0.1-SNAPSHOT</revision>
     <!--endregion-->
@@ -39,9 +40,8 @@
     <checker.version>3.15.0</checker.version>
     <annotations.version>21.0.1</annotations.version>
     <jcip-annotations.version>1.0</jcip-annotations.version>
-    <spotbugs.version>4.2.3</spotbugs.version>
+    <spotbugs.version>4.3.0</spotbugs.version>
     <error_prone_annotations.version>2.7.1</error_prone_annotations.version>
-    <springdoc-openapi.version>1.5.3</springdoc-openapi.version>
     <!--endregion-->
 
     <!--region Test-libs-->
@@ -65,12 +65,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.kafka</groupId>
       <artifactId>spring-kafka</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -215,7 +215,7 @@
               <processorPath>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>2.4.5</version>
+                <version>${spring-boot.version}</version>
               </processorPath>
             </annotationProcessorPaths>
             <annotationProcessors>
