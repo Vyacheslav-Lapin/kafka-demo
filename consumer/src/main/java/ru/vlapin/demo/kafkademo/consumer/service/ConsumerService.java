@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class ConsumerService {
 
   @KafkaListener(
-      topics = "${mykafka.topic-name}",
-      groupId = "${spring.kafka.consumer.group-id}")
+      topics = "${mykafka.topic-name:mike}",
+      groupId = "${spring.kafka.consumer.group-id:mikesconsumergroup}")
   public void consumeMessages(String message) {
     log.info("CONSUMER: We received a message!!! {}", message);
   }
